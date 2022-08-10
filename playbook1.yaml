@@ -1,0 +1,28 @@
+---
+- name: Deploy Kubernetes to Linux hosts
+  hosts: k8s_nodes
+  vars_files: ./vars/all
+ 
+  roles:
+    - role: update_os
+  tags: 
+    - update_os
+    - deploy_kubernetes
+
+  roles:
+    - role: install_packages
+  tags:
+    - install_packages
+    - deploy_kubernetes
+
+  roles:
+    - role: add_k8s_repo
+  tags:
+    - add_repo
+    - deploy_kubernetes
+
+  roles:
+    - role: install_k8s_packages
+  tags:
+    - install_k8s
+    - deploy_kubernetes
