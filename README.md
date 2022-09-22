@@ -2,7 +2,7 @@
 Ansible roles to install and configure a production Kubernetes cluster environment on a single node.
 
 Required nodes:
-* OS: Ubuntu 18.04.6 Server (Min Install)
+* OS: [Ubuntu 18.04.6 Server (Min Install)](https://releases.ubuntu.com/18.04/)
 * CPU: 2 CPU/2 Cores
 * RAM: 8 GB
 * HDD: 100 GB
