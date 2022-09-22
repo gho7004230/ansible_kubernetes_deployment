@@ -16,6 +16,7 @@ Hosts:
 
 Ansible command: $ ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 * Once Ansible is complete, run command: $ kubectl get pods --all_namespaces
+* Follow guidance [here](computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/) to join new nodes to the cluster
  
 # Pre-Configuration Settings:
 * Set static IP of server to 192.168.200.101/24 (You can change this but be sure to change the IP variable in vars/all)
