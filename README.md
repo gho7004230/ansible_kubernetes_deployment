@@ -19,7 +19,7 @@ Ansible command: $ ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 * Expected Result:
 * NAMESPACE          NAME                                       READY   STATUS    RESTARTS   AGE
 * calico-apiserver   calico-apiserver-5bb6748454-5qtqb          1/1     Running   0          34m
-calico-apiserver   calico-apiserver-5bb6748454-f264n          1/1     Running   0          34m
+* calico-apiserver   calico-apiserver-5bb6748454-f264n          1/1     Running   0          34m
 calico-system      calico-kube-controllers-85666c5b94-cf446   1/1     Running   0          35m
 calico-system      calico-node-l4r6h                          1/1     Running   0          35m
 calico-system      calico-typha-7b5c5d64c7-hkdv2              1/1     Running   0          35m
