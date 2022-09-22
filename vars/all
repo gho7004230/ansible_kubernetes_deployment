@@ -1,1 +1,4 @@
 # Vars File
+
+k8s_ip_network: 192.168.200.0/24
+k8s_control_node: master01.lab.local
