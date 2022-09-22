@@ -22,3 +22,4 @@ Ansible command: ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 * Comment out swap mount in /etc/fstab and reboot server
 * Create user ansible and ensure user is part of the sudo group
 * Edit /etc/sudoers %sudo line.  Change line to ALL=NOPASSWD: ALL
+* Touch a file called /var/log/ansible.log and run command: chown ansible:sudo /var/log/ansible.log
