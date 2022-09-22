@@ -1,35 +1,47 @@
 ---
 - name: Deploy Kubernetes to Linux hosts
   hosts: k8s_nodes
-  vars_files:
+  vars_files: 
     - vars/all
   tasks:
- 
-  - name: Update Linux OS
-    include_role:
-      name: update_os
-  tags: 
-    - update_os
-    - deploy_kubernetes
 
   - name: Install Linux Packages
     include_role:
       name: install_packages
-  tags:
-    - install_packages
-    - deploy_kubernetes
+    tags:
+      - deploy_kubernetes
 
-  - name: Add Kubernetes Repo to Apt Sources
-    include_role:
-      name: add_k8s_repo
-  tags:
-    - add_repo
-    - deploy_kubernetes
 
-  - name: Install Kubernetes Packages
+  - name: Install Kubernetes
     include_role: 
-      name: install_k8s_packages
-  tags:
-    - install_k8s
-    - deploy_kubernetes
+      name: install_k8s
+    tags:
+      - add_repo
+      - install_k8s
+      - deploy_kubernetes
+
+
+  - name: Init Kubernetes
+    include_role:
+      name: init_k8s
+    tags:
+      - init_k8s
+      - deploy_kubernetes
+
+
+  - name: Init Kubernetes Network
+    include_role:
+      name: init_k8s_networking
+    tags:
+      - init_k8s_network
+      - deploy_kubernetes
+
+
+  - name: Untaint Master Node
+    include_role:
+      name: untaint_k8s_master
+    tags:
+      - untaint_master
+      - deploy_kubernetes
+
 ...
