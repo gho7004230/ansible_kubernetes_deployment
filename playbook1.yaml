@@ -1,6 +1,6 @@
 ---
 - name: Deploy Kubernetes to Linux hosts
-  hosts: k8s_nodes
+  hosts: k8s_cluster_master
   vars_files: 
     - vars/all
   tasks:
@@ -9,6 +9,7 @@
     include_role:
       name: install_packages
     tags:
+      - install_packages
       - deploy_kubernetes
 
 
@@ -44,4 +45,10 @@
       - untaint_master
       - deploy_kubernetes
 
+
+  - name: Reset Cluster
+    include_role:
+      name: reset_cluster
+    tags:
+      - reset_cluster
 ...
