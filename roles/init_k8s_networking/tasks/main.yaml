@@ -1,0 +1,46 @@
+---
+- name: Copy Calico Network Config to Ansible home Directory
+  template:
+    src: tigera-operator.yaml.j2
+    dest: /home/ansible/tigera-operator.yaml
+    mode: 0776
+  tags:
+    - init_k8s_network
+    - deploy_kubernetes
+
+
+- name: Copy Custom Network Config to Ansible home Directory
+  template:
+    src: custom-resources.yaml.j2
+    dest: /home/ansible/custom-resources.yaml
+    mode: 0776
+  tags:
+    - init_k8s_network
+    - deploy_kubernetes
+
+
+
+- name: Copy Custom Network Config to Ansible home Directory
+  template:
+    src: custom-resources.yaml.j2
+    dest: /home/ansible/custom-resources.yaml
+    mode: 0776
+  tags:
+    - init_k8s_network
+    - deploy_kubernetes
+
+- name: Copy Network Script to Ansible home Directory
+  template:
+    src: init_networking.sh.j2
+    dest: /home/ansible/init_networking.sh
+    mode: 0776
+  tags:
+    - init_k8s_network
+    - deploy_kubernetes
+
+- name: Execute Network Script
+  shell: "/home/ansible/init_networking.sh"
+  tags:
+    - init_k8s_network
+    - deploy_kubernetes
+...
