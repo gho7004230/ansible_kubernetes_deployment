@@ -1,15 +1,7 @@
-[ansible_control]
-jumpbox
-
 [k8s_masters]
-master01
-master02
-master03
+master01.lab.local
 
 [k8s_workers]
-worker01
-worker02
-worker03
 
 [k8s_nodes:children]
 k8s_masters
