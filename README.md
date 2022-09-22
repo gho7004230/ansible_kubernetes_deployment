@@ -14,7 +14,7 @@ Hosts:
 * Master01.lab.local - 192.168.200.101
 * Cluster01.lab.local - CNAME
 
-Ansible command: ansible-playbook -v playbook1.yaml -t deploy_kubernetes
+Ansible command: $ ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 
 # Pre-Configuration Settings:
 * Set static IP of server to 192.168.200.101/24 (You can change this but be sure to change the IP variable in vars/all)
@@ -22,6 +22,6 @@ Ansible command: ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 * Comment out swap mount in /etc/fstab and reboot server
 * Create user ansible and ensure user is part of the sudo group
 * Edit /etc/sudoers %sudo line.  Change line to ALL=NOPASSWD: ALL
-* Create ssh key by running the command: ssh-keygen -t rsa (accept all defaults), then run command: ssh-copy-id ansible@master01.lab.local
-* Touch a file called /var/log/ansible.log and run command: chown ansible:sudo /var/log/ansible.log
-* Test ansible by running the command: ansible -m ping all
+* Create ssh key by running the command: $ ssh-keygen -t rsa (accept all defaults), then run command: $ ssh-copy-id ansible@master01.lab.local
+* Touch a file called /var/log/ansible.log and run command: $ chown ansible:sudo /var/log/ansible.log
+* Test ansible by running the command: $ ansible -m ping all
