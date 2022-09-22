@@ -1,5 +1,7 @@
-[k8s_masters]
+[k8s_cluster_master]
 master01.lab.local
+
+[k8s_masters]
 
 [k8s_workers]
 
