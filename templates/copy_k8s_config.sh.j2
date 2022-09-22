@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir -p /home/ansible/.kube
+cp -f /etc/kubernetes/admin.conf /home/ansible/.kube/config
+chown ansible:ansible /home/ansible/.kube/config
