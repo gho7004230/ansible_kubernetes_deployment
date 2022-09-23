@@ -8,7 +8,7 @@ Required nodes:
 * HDD: 80 GB
 * Subnet: 192.168.200.0/24
 * Hostname: master01.lab.local
-* Software: openssh-server, ansible 2.5.1, python 2.7.17 
+* Software: git, openssh-server, ansible 2.5.1, python 2.7.17 
 
 Hosts:
 * master01.lab.local - 192.168.200.101
