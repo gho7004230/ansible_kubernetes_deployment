@@ -1,3 +1,8 @@
+
+# This playbook deploys a kubernetes cluster to the master controller node, 
+# please run playbook2 to add additional master or worker nodes.
+# To get the discover token and certificate hash to join workers, use the -vvv 
+# option when running this playbook. Use playbook2 to add additional master/workers.
 ---
 - name: Deploy Kubernetes to Linux hosts
   hosts: k8s_cluster_master
