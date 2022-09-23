@@ -1,5 +1,5 @@
 # Run command: $ kubectl create -f apache2_deployer.yaml
-# Then run command: $ kubectl get services to see exposed port # of http service
+# Then run command: $ "kubectl get service -n apache2" to see exposed port # of http service
 
 apiVersion: v1
 kind: Namespace
