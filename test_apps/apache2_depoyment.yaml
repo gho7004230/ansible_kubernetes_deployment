@@ -1,5 +1,6 @@
 # Run command: $ kubectl create -f apache2_deployer.yaml
 # Then run command: $ "kubectl get service -n apache2" to see exposed port # of http service
+# To see the page from the cluster, run command: $ curl http://cluster01.lab.local:{NodePort Port #}
 
 apiVersion: v1
 kind: Namespace
