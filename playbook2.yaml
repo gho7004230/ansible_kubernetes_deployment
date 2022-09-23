@@ -1,0 +1,39 @@
+# This playbook installs Kubernetes and provides the capability to add 
+# additional master or worker nodes to an existing Kubernetes cluster.
+---
+- name: Deploy Kubernetes to Linux hosts
+  hosts: k8s_workers
+  vars_files:
+    - vars/all
+  tasks:
+
+  - name: Install Linux Packages
+    include_role:
+      name: install_packages
+    tags:
+      - install_packages
+      - deploy_kubernetes
+
+
+  - name: Install Kubernetes
+    include_role:
+      name: install_k8s
+    tags:
+      - add_repo
+      - install_k8s
+      - deploy_kubernetes
+
+# Once ansible is complete, manually run command to join workers: $ sudo kubeadm join cluster01.lab.local:6443 \
+# --token {token} \
+# --discovery-token-ca-cert-hash sha256:{hash}
+# To join additional master nodes, run command: $ sudo join cluster01.lab.local:6443 \
+# --token mq2qv5.oro0ffnqy24rud1f \
+# --discovery-token-ca-cert-hash sha256:{hash} \
+# --control-plane --certificate-key {key hash}
+
+  - name: Reset Cluster
+    include_role:
+      name: reset_cluster
+    tags:
+      - reset_cluster
+...
