@@ -1,2 +1,2 @@
 #!/bin/bash
-kubeadm init --pod-network-cidr={{k8s_ip_network}} --upload-certs --control-plane-endpoint={{k8s_control_node}}
+kubeadm init --pod-network-cidr={{k8s_ip_network}} --upload-certs --control-plane-endpoint={{k8s_control_node}} > /home/ansible/cluster_join_info.txt

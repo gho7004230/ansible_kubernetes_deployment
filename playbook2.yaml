@@ -26,6 +26,9 @@
 # Once ansible is complete, manually run command to join workers: $ sudo kubeadm join cluster01.lab.local:6443 \
 # --token {token} \
 # --discovery-token-ca-cert-hash sha256:{hash}
+
+## Join Info can be found at /home/ansible/cluster_join_info.txt ##
+
 # To join additional master nodes, run command: $ sudo join cluster01.lab.local:6443 \
 # --token mq2qv5.oro0ffnqy24rud1f \
 # --discovery-token-ca-cert-hash sha256:{hash} \

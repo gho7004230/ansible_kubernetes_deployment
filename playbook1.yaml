@@ -43,7 +43,7 @@
       - deploy_kubernetes
 
 
-  - name: Untaint Master Node
+  - name: Taint Control Plane Node
     include_role:
       name: untaint_k8s_master
     tags:
