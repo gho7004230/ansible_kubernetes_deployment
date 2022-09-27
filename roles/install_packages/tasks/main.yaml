@@ -12,6 +12,7 @@
     pkg:
       - curl
       - gnupg2
+      - pass
       - software-properties-common
       - apt-transport-https
       - ca-certificates
