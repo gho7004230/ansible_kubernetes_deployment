@@ -20,6 +20,9 @@ spec:
     spec:
       containers:
       - name: hello-world
+       #image: nigelpoulton/k8sbook: latest
         image: nigelpoulton/k8sbook:edge
         ports:
         - containerPort: 8080
+
+# do a rolling update using command: $ kubectl apply -f hello-world-deployment.yaml --record
