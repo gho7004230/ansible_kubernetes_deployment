@@ -1,7 +1,0 @@
----
-- name: Reset Kubernetes
-  shell: "kubeadm reset --force"
-  ignore_errors: True
-  tags:
-    - reset_cluster
-...
