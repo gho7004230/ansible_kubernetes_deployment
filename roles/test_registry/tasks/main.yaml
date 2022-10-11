@@ -1,0 +1,22 @@
+---
+- name: Add nginx deployment to Ansible Home Directory
+  template:
+    src: nginx-test.yaml.j2
+    dest: /home/ansible/nginx-test.yaml
+    mode: 0776
+  tags:
+    - test_registry
+
+- name: Add nginx test script to Ansible Home Directory
+  template:
+    src: test_registry.sh.j2
+    dest: /home/ansible/test_registry.sh
+    mode: 0776
+  tags:
+    - test_registry
+
+- name: Execute test script
+  shell: "/home/ansible/test_registry.sh"
+  tags:
+    - test_registry
+

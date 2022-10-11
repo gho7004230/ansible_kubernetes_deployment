@@ -1,0 +1,57 @@
+---
+- name: Add Certificate Script to Ansible Home Directory
+  template:
+    src: reg_ssl_gen.sh.j2
+    dest: /home/ansible/reg_ssl_gen.sh
+    mode: 0776
+  tags:
+    - deploy_registry
+
+- name: Add Certificate CSR Config File to Ansible Home Directory
+  template:
+    src: registry-csr.conf.j2
+    dest: /home/ansible/registry-csr.conf
+    mode: 0776
+  tags:
+    - deploy_registry
+
+- name: Execute Certificate Script
+  shell: "/home/ansible/reg_ssl_gen.sh"
+  tags:
+    - deploy_registry
+
+- name: Copy Registry Deployment manifest to Ansible Home Directory
+  template:
+    src: registry.yaml.j2
+    dest: /home/ansible/registry.yaml
+    mode: 0776
+  tags:
+    - deploy_registry
+
+- name: Copy Registry Deployment manifest to Ansible Home Directory
+  template:
+    src: registry.yaml.j2
+    dest: /home/ansible/registry.yaml
+    mode: 0776
+  tags:
+    - deploy_registry
+
+- name: Add Service Script to Ansible Home Directory
+  template:
+    src: registry-service.yaml.j2
+    dest: /home/ansible/registry-svc.yaml
+    mode: 0776
+  tags:
+    - deploy_registry
+
+- name: Execute Deployment Script
+  shell: "/home/ansible/init_registry.sh"
+  tags:
+    - deploy_registry
+
+- name: Reboot host
+  shell: "reboot now"
+
+  tags:
+    - deploy_registry
+...

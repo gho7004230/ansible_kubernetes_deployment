@@ -1,0 +1,91 @@
+---
+
+- name: Update Debian distro
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_nfs
+
+- name: Install Required NFS Packages
+  apt:
+    pkg:
+      - nfs-kernel-server
+
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_nfs
+
+- name: Add nfs_server script to home directory
+  template:
+    src: create_nfs_server.sh.j2
+    dest: /home/ansible/create_nfs_server.sh
+    mode: 0776
+  tags:
+    - deploy_nfs
+
+- name: Execute nfs_server script
+  shell: "/home/ansible/create_nfs_server.sh"
+  tags:
+    - deploy_nfs
+
+- name: Install Client Package
+  apt:
+    pkg:
+      - nfs-common
+
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_nfs
+
+- name: Add nfs_client script to home directory
+  template:
+    src: set_nfs_client.sh.j2
+    dest: /home/ansible/set_nfs_client.sh
+    mode: 0776
+  tags:
+    - deploy_nfs
+
+- name: Execute nfs_client script
+  shell: "/home/ansible/set_nfs_client.sh"
+  tags:
+    - deploy_nfs
+
+- name: Add nfs exports to home directory
+  template:
+    src: exports.j2
+    dest: /home/ansible/exports
+    mode: 0776
+  tags:
+    - deploy_nfs
+
+#############################################
+##############REVERT#########################
+- name: Remove NFS
+  apt:
+    pkg:
+      -nfs-common
+      -nfs-kernel-server
+    state: absent
+  tags:
+    - remove_nfs
+
+- name: Add removal script to home directory
+  template:
+    src: delete_nfs.sh.j2
+    dest: /home/ansible/delete_nfs.sh
+    mode: 0776
+  tags:
+    - remove_nfs
+
+- name: Execute removal script
+  shell: "/home/ansible/delete_nfs.sh"
+  tags:
+    - remove_nfs
+
+- name: Reset /etc/exports
+  shell: "rm -rf /etc/exports && cp /home/ansible/exports /etc/exports"
+  tags:
+    - remove_nfs
+...
+

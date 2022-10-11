@@ -1,0 +1,38 @@
+---
+
+- name: Update Debian distro
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_kubernetes
+
+- name: Install Required Packages
+  apt:
+    pkg:
+      - curl
+      - gnupg2
+      - pass
+      - software-properties-common
+      - apt-transport-https
+      - ca-certificates
+      - git
+      - wget
+      - mlocate
+      - net-tools
+      - docker.io
+      - docker-compose
+  
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_kubernetes
+
+- name: Enable Docker Service
+  service:
+    name: docker
+    enabled: true
+    state: started
+  tags:
+    - deploy_kubernetes
+
+...
