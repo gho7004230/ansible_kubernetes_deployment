@@ -1,0 +1,21 @@
+# This playbook installs Kubernetes and provides the capability to add 
+# additional master or worker nodes to an existing Kubernetes cluster.
+---
+- name: Deploy NFS Server to Linux
+  hosts: k8s_cluster_master
+  vars_files:
+    - vars/all
+  tasks:
+
+  - name: Install NFS
+    include_role:
+      name: deploy_nfs
+    tags:
+      - deploy_nfs
+
+  - name: Delete NFS
+    include_role:
+      name: deploy_nfs
+    tags:
+      - remove_nfs
+...

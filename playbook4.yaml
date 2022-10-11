@@ -1,0 +1,21 @@
+# This playbook installs Kubernetes and provides the capability to add 
+# additional master or worker nodes to an existing Kubernetes cluster.
+---
+- name: Deploy Registry Server to Kubernetes
+  hosts: k8s_cluster_master
+  vars_files:
+    - vars/all
+  tasks:
+
+  - name: Deploy Registry
+    include_role:
+      name: deploy_registry
+    tags:
+      - deploy_registry
+
+  - name: Test Registry
+    include_role:
+      name: test_registry
+    tags:
+      - test_registry
+...
