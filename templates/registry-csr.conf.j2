@@ -1,0 +1,26 @@
+[ req ]
+default_bits           = 4096
+default_md             = sha512
+default_keyfile        = cluster01.lab.local
+prompt                 = no
+encrypt_key            = no
+distinguished_name     = req_distinguished_name
+req_extensions = v3_req
+
+# distinguished_name
+[ req_distinguished_name ]
+countryName            = "US"
+localityName           = "San Antonio"
+organizationName       = "Lab"
+organizationalUnitName = "Local"
+commonName             = "cluster01.lab.local"
+
+[ v3_req ]
+keyUsage               = keyEncipherment, dataEncipherment
+extendedKeyUsage       = serverAuth, clientAuth
+subjectAltName         = @alt_names
+
+[ alt_names ]
+DNS.1 = cluster01.lab.local
+DNS.2 = registry.lab.local
+DNS.3 = docker.lab.local

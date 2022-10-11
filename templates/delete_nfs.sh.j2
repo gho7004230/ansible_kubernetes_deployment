@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sed '/certs/{N;d}' /etc/fstab > fstab
+sed '/registry/d'  /etc/fstab > fstab
+
+mv fstab /etc/fstab
+umount /opt/certs
+umount /opt/registry
+
+rm -rf /nfs
+rm -rf /opt/certs
+rm -rf /opt/registry

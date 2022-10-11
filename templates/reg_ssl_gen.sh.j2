@@ -1,0 +1,6 @@
+#!/bin/bash
+openssl req -config registry-csr.conf -newkey rsa:4096 -nodes -sha256 -keyout /opt/certs/registry.key -x509 -days 365 -out /opt/certs/registry.crt
+
+cp /opt/certs/registry.crt /usr/local/share/ca-certificates && cp /opt/certs/registry.crt /usr/share/ca-certificates
+
+update-ca-certificates

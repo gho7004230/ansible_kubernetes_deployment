@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p /home/ansible/nfs_share
+
+chown -R  ansible:sudo /home/ansible/nfs_share
+
+mount -t nfs -o vers=4 192.168.200.101:/certs /home/ansible/nfs_share
+
+echo "192.168.200.101:/certs  /home/ansible/nfs_share  defaults,timeo=900,retrans=5,_netdev  0 0" >> /etc/fstab

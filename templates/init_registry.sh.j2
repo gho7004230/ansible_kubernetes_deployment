@@ -1,0 +1,4 @@
+#!/bin/bash
+
+kubectl --kubeconfig /home/ansible/.kube/config create -f registry.yaml
+kubectl --kubeconfig /home/ansible/.kube/config create -f registry-svc.yaml

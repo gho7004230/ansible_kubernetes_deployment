@@ -1,0 +1,24 @@
+#!/bin/bash
+
+rm -rf /etc/exports
+cp exports /etc/exports
+
+mkdir -p /nfs/certs
+mkdir -p /nfs/registry
+mkdir -p /opt/certs
+mkdir -p /opt/registry
+
+mount --bind /nfs/certs /opt/certs
+mount --bind /nfs/registry /opt/registry
+
+chmod -R 776 /nfs
+
+chown -R ansible:sudo /nfs
+
+echo "/opt/certs  /nfs/certs  none  bind  0 0" >> /etc/fstab
+echo "/opt/registry  /nfs/registry  none  bind  0 0" >> /etc/fstab
+
+echo "/nfs	*(rw,sync,no_subtree_check,crossmnt,fsid=0)" >> /etc/exports
+
+exportfs -ar
+
