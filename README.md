@@ -20,7 +20,7 @@ Hosts:
 # Additional Playbooks:
 * Playbook2 - Adds nodes to cluster
 * Playbook3 - Adds persistent storage via NFS
-* Playbook4 - Adds a private docker registry that K8 can push & pull from
+* Playbook4 - Adds a private docker registry that Kubernetes can push & pull from
 
 * Once Ansible is complete, run command: $ kubectl get pods --all_namespaces
 * Follow guidance [here](computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/) to join additional master & worker nodes to the cluster
