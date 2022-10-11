@@ -17,6 +17,11 @@ Hosts:
 * Ansible command: $ ansible-playbook -v playbook1.yaml -t deploy_kubernetes
 * Revert command:  $ ansible-playbook -v playbook1.yaml -t reset_cluster
 
+# Additional Playbooks:
+* Playbook2 - Adds nodes to cluster
+* Playbook3 - Adds persistent storage via NFS
+* Playbook4 - Adds a private docker registry that K8 can push & pull from
+
 * Once Ansible is complete, run command: $ kubectl get pods --all_namespaces
 * Follow guidance [here](computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/) to join additional master & worker nodes to the cluster
  
