@@ -43,6 +43,14 @@
     mode: 0776
   tags:
     - deploy_registry
+    
+- name: Add Init Script to Ansible Home Directory
+  template:
+    src: init_registry.sh.j2
+    dest: /home/ansible/init_registry.sh
+    mode: 0776
+  tags:
+    - deploy_registry
 
 - name: Execute Deployment Script
   shell: "/home/ansible/init_registry.sh"
