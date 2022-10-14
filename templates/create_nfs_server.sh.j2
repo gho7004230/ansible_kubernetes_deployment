@@ -18,7 +18,7 @@ chown -R ansible:sudo /nfs
 echo "/opt/certs  /nfs/certs  none  bind  0 0" >> /etc/fstab
 echo "/opt/registry  /nfs/registry  none  bind  0 0" >> /etc/fstab
 
-echo "/nfs	*(rw,sync,no_subtree_check,crossmnt,fsid=0)" >> /etc/exports
+echo "/nfs	*(rw,sync,no_subtree_check,crossmnt,no_root_squash,fsid=0)" >> /etc/exports
 
 exportfs -ar
 
