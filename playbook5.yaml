@@ -1,0 +1,21 @@
+# This playbook installs Kubernetes and provides the capability to add 
+# additional master or worker nodes to an existing Kubernetes cluster.
+---
+- name: Deploy Helm to Kubernetes
+  hosts: k8s_cluster_master
+  vars_files:
+    - vars/all
+  tasks:
+
+  - name: Deploy Helm
+    include_role:
+      name: deploy_helm
+    tags:
+      - deploy_helm
+
+  - name: Reomove Helm
+    include_role:
+      name: remove_helm
+    tags:
+      - remove_helm
+...
