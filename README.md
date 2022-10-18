@@ -21,6 +21,7 @@ Hosts:
 * Playbook2 - Adds nodes to cluster
 * Playbook3 - Adds persistent storage via NFS
 * Playbook4 - Adds a private docker registry to the cluster that Kubernetes can push & pull from
+* Playbook5 - Adds Helm to Master01 Server
 
 * Once Ansible is complete, run command: $ kubectl get pods --all_namespaces
 * Follow guidance [here](computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/) to join additional master & worker nodes to the cluster
