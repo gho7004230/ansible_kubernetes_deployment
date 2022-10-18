@@ -59,7 +59,6 @@
 
 - name: Reboot host after 1 minute delay
   shell: "shutdown -r +1"
-
   tags:
     - deploy_registry
 ...
