@@ -58,7 +58,7 @@
     - deploy_registry
 
 - name: Reboot host
-  shell: "reboot now"
+  shell: "reboot +1"
 
   tags:
     - deploy_registry
