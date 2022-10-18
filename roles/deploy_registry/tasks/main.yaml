@@ -57,8 +57,8 @@
   tags:
     - deploy_registry
 
-- name: Reboot host
-  shell: "reboot +1"
+- name: Reboot host after 1 minute delay
+  shell: "shutdown -r +1"
 
   tags:
     - deploy_registry
