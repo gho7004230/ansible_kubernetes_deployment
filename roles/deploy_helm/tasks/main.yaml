@@ -1,0 +1,58 @@
+---
+
+- name: Add Helm repo gpg key to server
+  template:
+    src: helm_key_add.sh.j2
+    dest: /home/ansible/helm_key_add.sh
+    mode: 0777
+  tags:
+    - deploy_helm
+
+- name: Execute shell script to add key
+  shell: "/home/ansible/helm_key_add.sh"
+  tags:
+    - deploy_helm
+
+- name: Add Helm repo list to apt sources
+  template:
+    src: helm_sources_list.sh.j2
+    dest: /home/ansible/helm_sources_list.sh
+    mode: 0777
+  tags:
+    - deploy_helm
+
+- name: Execute shell script to add repo
+  shell: "/home/ansible/helm_sources_list.sh"
+  tags:
+    - deploy_helm
+
+- name: Update Debian distro
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_helm
+
+- name: Install Helm Package
+  apt:
+    pkg:
+      - helm
+  
+  when: ansible_os_family == "Debian"
+  tags:
+    - deploy_helm
+
+###################################
+#############REVERT################
+
+- name: Remove Helm Package
+  apt:
+    pkg:
+      - helm
+    state: absent
+
+  when: ansible_os_family == "Debian"
+  tags:
+    - remove_helm
+
+...
