@@ -4,3 +4,4 @@ docker pull nginx:latest
 docker tag nginx:latest master01:31320/nginx:1.17
 docker push master01:31320/nginx:1.17
 kubectl --kubeconfig /home/ansible/.kube/config create -f nginx-test.yaml 
+kubectl --kubeconfig /home/ansible/.kube/config expose deployment/nginx-test-deployment --type=NodePort
