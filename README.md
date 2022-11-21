@@ -25,6 +25,7 @@ Hosts:
 
 * Once Ansible is complete, run command: $ kubectl get pods --all_namespaces
 * Follow guidance [here](computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/) to join additional master & worker nodes to the cluster
+* Also you can run $ sudo kubeadm token create --print-join-command from the master01 node to create a new join token
  
 # Pre-Configuration Settings:
 * Set static IP of server to 192.168.200.101/24 (You can change this but be sure to change the IP variable in vars/all)
